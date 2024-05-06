@@ -122,6 +122,7 @@
 
 
 
+import 'package:firebase_app/Ui/Buttons/buttons.dart';
 import 'package:firebase_app/Ui/Screens/homescreeen.dart';
 import 'package:firebase_app/Ui/login_signUp/signup.dart';
 import 'package:flutter/material.dart';
@@ -132,6 +133,7 @@ class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
+
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
@@ -213,6 +215,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: const Text("Login"),
                   ),
+                  Button(label: "login", press: (){}),
 
 
 //                   Button(label: "Login", press: (){
