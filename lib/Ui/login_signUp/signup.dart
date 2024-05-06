@@ -10,6 +10,7 @@ class SignUppage extends StatefulWidget {
 }
 
 class _SignUppageState extends State<SignUppage> {
+  final _formkey = GlobalKey<FormState>();
   final emailcontroller = TextEditingController();
   final passcontroller = TextEditingController();
   @override
@@ -24,6 +25,7 @@ class _SignUppageState extends State<SignUppage> {
         child: Padding(padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 20),
         child: Center(
           child: Form(
+            key: _formkey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,10 +38,23 @@ class _SignUppageState extends State<SignUppage> {
                   controller: emailcontroller ,
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.email),
                     
                     labelText: "Enter Email",
                   border: const OutlineInputBorder(),
                   ),
+                   validator: (value) {
+                    bool emailValid = RegExp( r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_^{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value!);
+                    if(value.isEmpty){
+                      return "Enter Email";
+                    }
+                    if(!emailValid){
+                      return "Enter Valid Email";
+                    }
+                    return null;
+                      
+                  
+                  },
             
                 ),
                 const SizedBox(
@@ -54,15 +69,30 @@ class _SignUppageState extends State<SignUppage> {
                   obscureText: true,
                   
                   decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.lock_open),
                     
                     labelText: "Enter Password",
                   border: OutlineInputBorder(),
                   ),
+                   validator: (value) {
+                    if(value!.length < 8){
+                      return "The Password Length Must Be 8 characters Long";
+                    }
+                    if(value.isEmpty){
+                      return "Password";
+                    }
+                    return null;
+                  },
                 
                 ),
                 SizedBox(height: 20,),
             
                 Button(label: "SignUp", press: (){
+                   if(_formkey.currentState!.validate())
+                  
+                  {
+                
+                  }
             
                 }),
             SizedBox(height: 10,),

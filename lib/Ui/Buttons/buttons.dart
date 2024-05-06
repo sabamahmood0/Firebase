@@ -16,7 +16,7 @@ class Button extends StatelessWidget {
         color: Colors.blue,
         borderRadius: BorderRadius.circular(10)
       ),
-      child: TextButton(onPressed: (){}, child: Text(label),),
+      child: TextButton(onPressed: press, child: Text(label),),
     );
   }
 }
